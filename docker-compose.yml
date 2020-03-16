@@ -1,0 +1,16 @@
+version: '3.3'
+services:
+  app:
+      container_name: golang-hex
+      build: .
+      ports:
+        - '5000:5000'
+      links:
+        - mongo
+      depends_on:
+        - mongo
+  mongo:
+    image: 'mongo:latest'
+    container_name: 'mongo'
+    ports:
+      - '27017:27017'
